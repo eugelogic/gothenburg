@@ -1,0 +1,17 @@
+{
+  "name": "gothenburg",
+  "private": true,
+  "workspaces": ["studio","web"],
+  "version": "1.0.0",
+  "scripts": {
+  	"dev": "lerna run dev --parallel",
+    "build": "lerna run build --parallel",
+    "build-web": "lerna bootstrap --use-workspaces && cd web && yarn build",
+    "build-studio": "lerna bootstrap --use-workspaces && cd studio && yarn build",
+    "postinstall": "lerna bootstrap --use-workspaces",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
