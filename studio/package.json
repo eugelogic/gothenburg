@@ -1,5 +1,5 @@
 {
-  "name": "nextjsgothenburgblogbyem",
+  "name": "studio",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -25,7 +25,9 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@sanity/cli": "^2.22.0"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:eugelogic/gothenburg.git"
