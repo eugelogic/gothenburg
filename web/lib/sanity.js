@@ -1,12 +1,8 @@
 import { config } from './config'
-import {
-  createClient,
-  createImageUrlBuilder,
-  createPortableTextComponent
-  } from 'next-sanity'
+import { createClient, createImageUrlBuilder, createPortableTextComponent } from 'next-sanity'
 
 if (!config.projectId) {
-  throw Error("No Project ID set. Check your environment variables.");
+  throw Error('No Project ID set. Check your environment variables.')
 }
 
 export const sanityClient = createClient(config)

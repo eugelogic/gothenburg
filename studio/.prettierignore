@@ -1,0 +1,11 @@
+.cache
+.gitignore
+.npmignore
+
+config
+node_modules
+plugins
+static
+
+package.json
+yarn.lock

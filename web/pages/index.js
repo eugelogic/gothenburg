@@ -18,7 +18,6 @@ const postsQuery = `*[_type == 'post']{
 }|order(publishedAt desc)`
 
 export const getStaticProps = async () => {
-
   const posts = await sanityClient.fetch(postsQuery)
 
   return {
@@ -29,7 +28,6 @@ export const getStaticProps = async () => {
 }
 
 const Home = ({ posts }) => {
-
   return (
     <div className={styles.container}>
       <Head>
@@ -39,22 +37,17 @@ const Home = ({ posts }) => {
       </Head>
 
       <main>
-
-        <h1 className={styles.title}>
-          Gothenburg
-        </h1>
+        <h1 className={styles.title}>Gothenburg</h1>
 
         <ul>
-          {posts?.length > 0 && posts.map(post =>(
-            <li key={post._id}>
-              <h2>{post.title}</h2>
-            </li>
-          ))}
-
+          {posts?.length > 0 &&
+            posts.map((post) => (
+              <li key={post._id}>
+                <h2>{post.title}</h2>
+              </li>
+            ))}
         </ul>
-
       </main>
-
     </div>
   )
 }

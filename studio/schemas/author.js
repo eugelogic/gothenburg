@@ -10,25 +10,25 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
-        maxLength: 96,
-      },
+        maxLength: 96
+      }
     },
     {
       name: 'image',
       title: 'Image',
       type: 'image',
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     },
     {
       name: 'bio',
@@ -38,16 +38,16 @@ export default {
         {
           title: 'Block',
           type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
-    },
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: []
+        }
+      ]
+    }
   ],
   preview: {
     select: {
       title: 'name',
-      media: 'image',
-    },
-  },
+      media: 'image'
+    }
+  }
 }

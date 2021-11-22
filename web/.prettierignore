@@ -1,0 +1,9 @@
+**/dist/**
+**/.next/**
+**/_next/**
+
+node_modules
+public
+
+package.json
+yarn.lock

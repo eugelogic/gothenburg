@@ -27,7 +27,8 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.22.0"
+    "@sanity/cli": "^2.22.0",
+    "prettier": "2.4.1"
   },
   "repository": {
     "type": "git",
