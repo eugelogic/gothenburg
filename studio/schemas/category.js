@@ -1,6 +1,9 @@
+import { FaBarcode } from 'react-icons/fa'
+
 export default {
   name: 'category',
   title: 'Category',
+  icon: FaBarcode,
   type: 'document',
   fields: [
     {

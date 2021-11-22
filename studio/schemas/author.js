@@ -1,6 +1,9 @@
+import { FaRegUser } from 'react-icons/fa'
+
 export default {
   name: 'author',
   title: 'Author',
+  icon: FaRegUser,
   type: 'document',
   fields: [
     {

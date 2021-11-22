@@ -1,4 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
+import { HiOutlineCog } from 'react-icons/hi'
 
 export default () =>
 	S.list()
@@ -10,6 +11,7 @@ export default () =>
 					// start with a 'Settings' label which shows the Site Settings
 					S.listItem()
 						.title('Settings')
+						.icon(HiOutlineCog)
 						.child(
 								S.document()
 									.schemaType('siteSettings')

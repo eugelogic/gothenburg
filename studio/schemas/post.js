@@ -1,6 +1,9 @@
+import { FaRegFile } from 'react-icons/fa'
+
 export default {
   name: 'post',
   title: 'Post',
+  icon: FaRegFile,
   type: 'document',
   fields: [
     {
