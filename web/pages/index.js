@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import { sanityClient } from '../lib/sanity'
 import Head from 'next/head'
+import Header from '../components/Header'
 import Link from 'next/link'
 import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
+
+const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
+  siteName
+}`
 
 const postsQuery = `*[_type == 'post']{
   _id,
@@ -23,15 +28,17 @@ const postsQuery = `*[_type == 'post']{
 export const getStaticProps = async () => {
 
   const posts = await sanityClient.fetch(postsQuery)
+  const siteSettings = await sanityClient.fetch(siteSettingsQuery)
 
   return {
     props: {
+      siteSettings,
       posts
     }
   }
 }
 
-const Home = ({ posts }) => {
+const Home = ({ siteSettings, posts }) => {
 
   const postsPerPage = 6
   const [items, setItems] = useState([])
@@ -47,11 +54,9 @@ const Home = ({ posts }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <Header siteSettings={siteSettings} />
 
-        <h1 className={styles.title}>
-          Gothenburg
-        </h1>
+      <main style={{ maxWidth: '600px', margin: '0 auto' }}>
 
         <ul style={{ listStyle: 'none' }}>
           {items?.length > 0 && items.map(item =>(

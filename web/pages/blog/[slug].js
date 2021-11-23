@@ -4,6 +4,11 @@ import {
     urlFor
  } from '../../lib/sanity'
 import Image from 'next/image'
+import Header from '../../components/Header'
+
+const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
+    siteName
+  }`
 
 const postPathQuery = `*[_type == 'post' && defined(slug.current)]{
     'params': {
@@ -39,18 +44,22 @@ export const getStaticProps = async ({ params }) => {
 
     const { slug } = params
     const post = await sanityClient.fetch(postQuery, { slug })
+    const siteSettings = await sanityClient.fetch(siteSettingsQuery)
 
     return {
         props: {
-            post
+            post,
+            siteSettings
         }
     }
 
 }
 
-const Post = ({ post }) => {
+const Post = ({ siteSettings, post }) => {
 
     return (
+        <>
+        <Header siteSettings={siteSettings} />
         <article style={{ maxWidth: '600px', margin: '0 auto'}}>
             <header>
                 <h1>{post.title}</h1>
@@ -64,6 +73,7 @@ const Post = ({ post }) => {
                 <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>
             </footer>
         </article>
+        </>
     )
 
 }
