@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { sanityClient } from '../lib/sanity'
 import Head from 'next/head'
+import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
 
 const postsQuery = `*[_type == 'post']{
@@ -18,6 +20,7 @@ const postsQuery = `*[_type == 'post']{
 }|order(publishedAt desc)`
 
 export const getStaticProps = async () => {
+
   const posts = await sanityClient.fetch(postsQuery)
 
   return {
@@ -28,6 +31,13 @@ export const getStaticProps = async () => {
 }
 
 const Home = ({ posts }) => {
+
+  const postsPerPage = 6
+  const [items, setItems] = useState([])
+  const action = (page, range, items) => {
+    setItems(items)
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -37,17 +47,27 @@ const Home = ({ posts }) => {
       </Head>
 
       <main>
-        <h1 className={styles.title}>Gothenburg</h1>
+
+        <h1 className={styles.title}>
+          Gothenburg
+        </h1>
 
         <ul>
-          {posts?.length > 0 &&
-            posts.map((post) => (
-              <li key={post._id}>
-                <h2>{post.title}</h2>
-              </li>
-            ))}
+          {items?.length > 0 && items.map(item =>(
+            <li key={item._id}>
+              <h2>{item.title}</h2>
+            </li>
+          ))}
         </ul>
+
+        <Pagination
+          items={posts}
+          action={action}
+          postsPerPage={postsPerPage}
+        />
+
       </main>
+
     </div>
   )
 }
