@@ -40,5 +40,16 @@
   font-size: 1.5rem;
 }
 
-@media (max-width: 600px) {
+.pagePagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.pagePagination li {
+  margin-right: 1rem;
+}
+
+.pagePagination li:last-child {
+  margin-right: 0;
 }

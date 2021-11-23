@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { sanityClient } from '../lib/sanity'
 import Head from 'next/head'
+import Link from 'next/link'
 import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
 
@@ -46,16 +47,18 @@ const Home = ({ posts }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main style={{ maxWidth: '600px', margin: '0 auto' }}>
 
         <h1 className={styles.title}>
           Gothenburg
         </h1>
 
-        <ul>
+        <ul style={{ listStyle: 'none' }}>
           {items?.length > 0 && items.map(item =>(
             <li key={item._id}>
-              <h2>{item.title}</h2>
+              <Link href={`/blog/${item.slug.current}`}>
+                <a><h2>{item.title}</h2></a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -64,6 +67,7 @@ const Home = ({ posts }) => {
           items={posts}
           action={action}
           postsPerPage={postsPerPage}
+          className={styles.pagePagination}
         />
 
       </main>
