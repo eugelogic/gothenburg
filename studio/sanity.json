@@ -11,7 +11,9 @@
     "@sanity/base",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/production-preview",
+    "@sanity/desk-tool",
+    "iframe-pane"
   ],
   "env": {
     "development": {
@@ -24,6 +26,10 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./schemas/resolveProductionUrl.js"
     },
     {
       "name": "part:@sanity/desk-tool/structure",

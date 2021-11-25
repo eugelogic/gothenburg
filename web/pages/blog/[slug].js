@@ -1,26 +1,40 @@
 import {
     sanityClient,
     PortableText,
-    urlFor
+    urlFor,
+    usePreviewSubscription
  } from '../../lib/sanity'
+import { getClient } from '../../lib/sanity.server'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Header from '../../components/Header'
 
-const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
-    siteName
-  }`
 
-const postPathQuery = `*[_type == 'post' && defined(slug.current)]{
-    'params': {
-        'slug': slug.current
+ // Helper function to return the correct version of the document
+ // If in "preview mode" and have multiple documents, return the draft
+const filterDataToSingleItem = (data, preview) => {
+    if (!Array.isArray(data)) {
+        return data
     }
-}`
+    if (data.length === 1) {
+      return data[0]
+    }
+    if (preview) {
+      return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
+    }
+    return data[0]
+}
+
+const allSlugsQuery = `*[_type == 'post' && defined(slug.current)][].slug.current`
 
 export const getStaticPaths = async () => {
-    const paths = await sanityClient.fetch(postPathQuery)
+
+    const posts = await getClient().fetch(allSlugsQuery)
+
     return {
-        paths,
-        fallback: false
+        paths: posts.map((slug) => `/blog/${slug}`),
+        fallback: true
     }
 
 }
@@ -40,39 +54,77 @@ const postQuery = `*[_type == 'post' && slug.current == $slug][0]{
     body
 }`
 
-export const getStaticProps = async ({ params }) => {
+const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
+    siteName
+}`
 
-    const { slug } = params
-    const post = await sanityClient.fetch(postQuery, { slug })
+export const getStaticProps = async ({ params, preview = false }) => {
+
+    const queryParams = {slug: params.slug}
+    const data = await getClient(preview).fetch(postQuery, queryParams)
     const siteSettings = await sanityClient.fetch(siteSettingsQuery)
+
+    if (!data) return { notFound: true }
+
+    const post = filterDataToSingleItem(data, preview)
 
     return {
         props: {
-            post,
+            preview,
+            data: { post, postQuery, queryParams },
             siteSettings
         }
     }
 
 }
 
-const Post = ({ siteSettings, post }) => {
+const Post = ({ siteSettings, data, preview }) => {
 
+    // `usePreviewSubscription` updates the preview content on the client-side
+    const {data: previewData} = usePreviewSubscription(data?.postQuery, {
+        params: data?.queryParams ?? {},
+        initialData: data?.post,
+        enabled: preview,
+    })
+
+    const post = filterDataToSingleItem(previewData, preview)
+
+    const router = useRouter()
+    if (router.isFallback) {
+        return <div>Loading .. .. .</div>
+    }
+
+    // the optional?.chaining is extremely important ,you can't rely on
+    // a single field of data existing whilst editors are creating new documents
     return (
         <>
         <Header siteSettings={siteSettings} />
         <article style={{ maxWidth: '600px', margin: '0 auto'}}>
             <header>
-                <h1>{post.title}</h1>
-                <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />
-                <div>Category: {post.category.name}</div>
+                {post?.title && <h1>{post.title}</h1>}
+                {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
+                {post?.category?.name && <div>Category: {post.category.name}</div>}
             </header>
             <div>
-                <PortableText blocks={post.body} />
+                {post?.body && <PortableText blocks={post.body} />}
             </div>
             <footer>
-                <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>
+                {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
             </footer>
         </article>
+        {preview &&
+            <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    padding: '1rem',
+                    background: 'red',
+                    color: 'white',
+                    maxWidth: '15rem',
+                    margin: '2rem auto'
+            }}>
+                <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
+            </div>
+        }
         </>
     )
 

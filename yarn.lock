@@ -2621,6 +2621,11 @@
     lodash "^4.17.15"
     slate "^0.58.4"
 
+"@sanity/production-preview@^2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@sanity/production-preview/-/production-preview-2.15.0.tgz#95e1b554876105be970166c71f96e0e4ac1ce76d"
+  integrity sha512-qwhxogxfXeKmWLf4gqh0XEhLD+zEzX3YYHunJqVnT0K1SvRgSQce81zF7Zau8mZI1vPuNaUO+g+DzHs3p/wYTg==
+
 "@sanity/react-hooks@2.22.0":
   version "2.22.0"
   resolved "https://registry.yarnpkg.com/@sanity/react-hooks/-/react-hooks-2.22.0.tgz#9394a694c0fd58c005bae4f4b60e6f0ef0c8873f"
@@ -2751,7 +2756,7 @@
     react "17.0.1"
     rxjs "^6.5.3"
 
-"@sanity/ui@^0.36.15":
+"@sanity/ui@^0.36.12", "@sanity/ui@^0.36.15":
   version "0.36.15"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.36.15.tgz#fd378890983b7f1332a389d4eb954993c1c146b7"
   integrity sha512-4IuyCpfJycfVB2PtWyUbD1bWvrTadH1fko3mmhbttggVXOSeclh0DIUP1595ckgZhjYVrM7QqxUn0wdSfRBnjQ==
@@ -10984,7 +10989,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -12039,6 +12044,16 @@ sanity-diff-patch@^1.0.9:
   integrity sha512-J5YeuM/S7rLTp51iqUunwzz7Rf68K/jCDGKtNCj6Wzcfgf9CH+0GtPlvf2DFsg0QQhYYZ72FOVn6skmoLjMCdw==
   dependencies:
     diff-match-patch "^1.0.5"
+
+sanity-plugin-iframe-pane@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.npmjs.org/sanity-plugin-iframe-pane/-/sanity-plugin-iframe-pane-1.0.14.tgz#6f73cfe253f601675676d9d4486f009491def48b"
+  integrity sha512-SEA0JIrn5rHM/2QlkfvrD6jHkEgAKx+aZtq9w5/6tuuloiHq7F9987lHko5Y7x7l2IZJsaV8/QSRtM/giLSaJw==
+  dependencies:
+    "@sanity/icons" "^1.2.1"
+    "@sanity/ui" "^0.36.12"
+    prop-types "15.7.2"
+    usehooks-ts "^1.2.0"
 
 sax@~1.2.4:
   version "1.2.4"
@@ -13595,6 +13610,11 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
+
+usehooks-ts@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/usehooks-ts/-/usehooks-ts-1.2.0.tgz#e69ccf47e4d13367eec5577e888691d3d870cace"
+  integrity sha512-9FuA+AEkmv7Je+EGJbclkMjkI892Ijcvfv8btt5z8tTZu4EL/ebDVnqz6LPgYBSC+RONJkdly6ZxFb3oKb8QcQ==
 
 user-home@^2.0.0:
   version "2.0.0"
