@@ -2,6 +2,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { HiOutlineCog } from 'react-icons/hi'
 import Iframe from 'sanity-plugin-iframe-pane'
 import resolveProductionUrl from './resolveProductionUrl'
+import SeoPane from 'sanity-plugin-seo-pane'
 
 export const getDefaultDocumentNode = () => {
   return S.document().views([
@@ -11,7 +12,15 @@ export const getDefaultDocumentNode = () => {
       .options({
         url: (doc) => resolveProductionUrl(doc)
       })
-      .title('Preview')
+      .title('Preview'),
+    S.view
+      .component(SeoPane)
+      .options({
+        keywords: `seo.keywords`,
+        synonyms: `seo.synonyms`,
+        url: (doc) => resolveProductionUrl(doc)
+      })
+      .title('SEO')
   ])
 }
 

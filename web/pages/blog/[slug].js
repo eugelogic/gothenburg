@@ -23,7 +23,11 @@ const filterDataToSingleItem = (data, preview) => {
     if (preview) {
       return data.find((item) => item._id.startsWith(`drafts.`)) || data[0]
     }
-    return data[0]
+    return data.length > 1 && preview
+        ? data.filter((item) => item._id.startsWith(`drafts.`)).pop()
+        : data.pop()
+
+    // return data[0]
 }
 
 const allSlugsQuery = `*[_type == 'post' && defined(slug.current)][].slug.current`
@@ -99,32 +103,34 @@ const Post = ({ siteSettings, data, preview }) => {
     return (
         <>
         <Header siteSettings={siteSettings} />
-        <article style={{ maxWidth: '600px', margin: '0 auto'}}>
-            <header>
-                {post?.title && <h1>{post.title}</h1>}
-                {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
-                {post?.category?.name && <div>Category: {post.category.name}</div>}
-            </header>
-            <div>
-                {post?.body && <PortableText blocks={post.body} />}
-            </div>
-            <footer>
-                {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
-            </footer>
-        </article>
-        {preview &&
-            <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    padding: '1rem',
-                    background: 'red',
-                    color: 'white',
-                    maxWidth: '15rem',
-                    margin: '2rem auto'
-            }}>
-                <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
-            </div>
-        }
+        <main>
+            <article data-content="main" style={{ maxWidth: '600px', margin: '0 auto'}}>
+                <header>
+                    {post?.title && <h1>{post.title}</h1>}
+                    {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
+                    {post?.category?.name && <div>Category: {post.category.name}</div>}
+                </header>
+                <div>
+                    {post?.body && <PortableText blocks={post.body} />}
+                </div>
+                <footer>
+                    {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
+                </footer>
+            </article>
+            {preview &&
+                <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        padding: '1rem',
+                        background: 'red',
+                        color: 'white',
+                        maxWidth: '15rem',
+                        margin: '2rem auto'
+                }}>
+                    <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
+                </div>
+            }
+        </main>
         </>
     )
 

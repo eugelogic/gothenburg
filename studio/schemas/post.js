@@ -23,14 +23,37 @@ export default {
       }
     },
     {
-      name: 'excerpt',
-      description: 'For SEO Purposes add a short description of this post.)',
-      title: 'Excerpt',
+      name: 'keywords',
+      title: 'Keywords',
+      type: 'string',
+      description: 'SEO: separate with commas.'
+    },
+    {
+      name: 'synonyms',
+      title: 'Synonyms',
+      type: 'string',
+      description: 'SEO: similar words to inform the SEO review.'
+    },
+    {
+      name: 'description',
+      description: 'SEO: this will show on a search engine result page.',
+      title: 'Description',
       rows: 5,
       type: 'text',
       validation: (Rule) =>
         Rule.max(160).error(
           'SEO descriptions are usually better when they are below 160 characters.'
+        )
+    },
+    {
+      name: 'excerpt',
+      description: 'This is a short description of the post appearing on the blog index.',
+      title: 'Excerpt',
+      rows: 5,
+      type: 'text',
+      validation: (Rule) =>
+        Rule.max(280).error(
+          'Please keep it within 280 characters.'
         )
     },
     {
