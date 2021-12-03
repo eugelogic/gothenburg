@@ -5,6 +5,7 @@ import {
     usePreviewSubscription
  } from '../../lib/sanity'
 import { getClient } from '../../lib/sanity.server'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -47,6 +48,7 @@ const postQuery = `*[_type == 'post' && slug.current == $slug][0]{
     _id,
     title,
     slug,
+    description,
     author->{
         name
     },
@@ -102,6 +104,9 @@ const Post = ({ siteSettings, data, preview }) => {
     // a single field of data existing whilst editors are creating new documents
     return (
         <>
+        <Head>
+            <meta name="description" content={post?.description} />
+        </Head>
         <Header siteSettings={siteSettings} />
         <main>
             <article data-content="main" style={{ maxWidth: '600px', margin: '0 auto'}}>

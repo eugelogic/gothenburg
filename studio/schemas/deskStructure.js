@@ -4,24 +4,26 @@ import Iframe from 'sanity-plugin-iframe-pane'
 import resolveProductionUrl from './resolveProductionUrl'
 import SeoPane from 'sanity-plugin-seo-pane'
 
-export const getDefaultDocumentNode = () => {
-  return S.document().views([
-    S.view.form(),
-    S.view
-      .component(Iframe)
-      .options({
-        url: (doc) => resolveProductionUrl(doc)
-      })
-      .title('Preview'),
-    S.view
-      .component(SeoPane)
-      .options({
-        keywords: `seo.keywords`,
-        synonyms: `seo.synonyms`,
-        url: (doc) => resolveProductionUrl(doc)
-      })
-      .title('SEO')
-  ])
+export const getDefaultDocumentNode = ({schemaType}) => {
+  if(schemaType === 'post') {
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(Iframe)
+        .options({
+          url: (doc) => resolveProductionUrl(doc)
+        })
+        .title('Preview'),
+      S.view
+        .component(SeoPane)
+        .options({
+          keywords: `keywords`,
+          synonyms: `synonyms`,
+          url: (doc) => resolveProductionUrl(doc)
+        })
+        .title('SEO')
+    ])
+  }
 }
 
 export default () =>
