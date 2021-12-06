@@ -7,7 +7,12 @@ import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
-  siteName
+  siteName,
+  mainNavigation[]->{
+      _id,
+      title,
+      slug
+  }
 }`
 
 const postsQuery = `*[_type == 'post']{

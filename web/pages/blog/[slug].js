@@ -55,7 +55,12 @@ const postQuery = `*[_type == 'post' && slug.current == $slug][0]{
 }`
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
-    siteName
+    siteName,
+    mainNavigation[]->{
+        _id,
+        title,
+        slug
+    }
 }`
 
 export const getStaticProps = async ({ params, preview = false }) => {

@@ -23,6 +23,22 @@ export default {
       name: 'siteDescription',
       title: 'Meta Description',
       type: 'text'
+    },
+    {
+      title: 'Main navigation',
+      name: 'mainNavigation',
+      description: 'Select pages for the top menu',
+      validation: Rule => [
+        Rule.max(5).warning('Are you sure you want more than 5 items?'),
+        Rule.unique().error('You have duplicate menu items'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'page' }],
+        },
+      ],
     }
   ]
 }

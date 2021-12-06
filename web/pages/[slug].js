@@ -25,7 +25,12 @@ const pageQuery = `*[_type == 'page' && slug.current == $slug][0]{
 }`
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
-    siteName
+    siteName,
+    mainNavigation[]->{
+        _id,
+        title,
+        slug
+    }
 }`
 
 export const getStaticProps = async ({ params }) => {
@@ -49,7 +54,7 @@ const Page = ({ page, siteSettings }) => {
         return <div>Loading ...</div>
     }
 
-    console.log(page)
+    // console.log(page)
 
     return (
         <>
