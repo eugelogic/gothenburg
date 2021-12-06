@@ -12,6 +12,11 @@ import post from './post'
 import author from './author'
 import siteSettings from './siteSettings'
 
+// Landing page sections
+import heroSection from './heroSection'
+import textSection from './textSection'
+import ctaSection from './ctaSection'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -28,6 +33,9 @@ export default createSchema({
     siteSettings,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent
+    blockContent,
+    heroSection,
+    textSection,
+    ctaSection
   ])
 })

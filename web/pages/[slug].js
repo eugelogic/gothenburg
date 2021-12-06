@@ -1,6 +1,7 @@
 import { sanityClient } from '../lib/sanity'
 import { useRouter } from 'next/router'
 import Header from '../components/Header'
+import RenderSection from '../components/RenderSection'
 
 const pageSlugQuery = `*[_type == "route" && defined(slug.current)]{
     'params': {
@@ -21,7 +22,8 @@ export const getStaticPaths = async () => {
 const pageQuery = `*[_type == 'page' && slug.current == $slug][0]{
     title,
     slug,
-    body
+    body,
+    content[] { ... }
 }`
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
@@ -62,6 +64,7 @@ const Page = ({ page, siteSettings }) => {
         <main style={{ maxWidth: '600px', margin: '0 auto'}}>
             <h1>{page?.title}</h1>
             <p>{page?.body}</p>
+            <RenderSection sections={page?.content} />
         </main>
         </>
     )

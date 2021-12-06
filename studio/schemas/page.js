@@ -23,6 +23,16 @@ export default {
       }
     },
     {
+      name: 'content',
+      type: 'array',
+      title: 'Page sections',
+      of: [
+        { type: 'heroSection' },
+        { type: 'textSection' },
+        { type: 'ctaSection' }
+      ],
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'text'

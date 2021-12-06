@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: end;
+  min-height: 400px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.content h2,
+.content p {
+  color: white;
+}
