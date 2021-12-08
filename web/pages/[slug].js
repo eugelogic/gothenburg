@@ -22,7 +22,6 @@ export const getStaticPaths = async () => {
 const pageQuery = `*[_type == 'page' && slug.current == $slug][0]{
     title,
     slug,
-    body,
     content[] { ... }
 }`
 
@@ -63,7 +62,6 @@ const Page = ({ page, siteSettings }) => {
         <Header siteSettings={siteSettings} />
         <main style={{ maxWidth: '600px', margin: '0 auto'}}>
             <h1>{page?.title}</h1>
-            <p>{page?.body}</p>
             <RenderSection sections={page?.content} />
         </main>
         </>

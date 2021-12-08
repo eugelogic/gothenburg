@@ -31,11 +31,6 @@ export default {
         { type: 'textSection' },
         { type: 'ctaSection' }
       ],
-    },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'text'
     }
   ],
 
