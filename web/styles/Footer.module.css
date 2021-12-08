@@ -4,3 +4,14 @@
   align-items: center;
   padding: 3rem 0 2rem;
 }
+
+.footer nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+.footer nav ul li {
+  padding: 1rem;
+}

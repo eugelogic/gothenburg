@@ -61,6 +61,11 @@ const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
         _id,
         title,
         slug
+    },
+    footerNavigation[]->{
+      _id,
+      title,
+      slug
     }
 }`
 
@@ -131,7 +136,7 @@ const Post = ({ siteSettings, data, preview }) => {
                 <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
             </div>
         }
-        <Footer />
+        <Footer siteSettings={siteSettings} />
         </>
     )
 

@@ -39,6 +39,22 @@ export default {
           to: [{ type: 'page' }],
         },
       ],
+    },
+    {
+      title: 'Footer navigation',
+      name: 'footerNavigation',
+      description: 'Select pages for the footer menu',
+      validation: Rule => [
+        Rule.max(3).warning('Are you sure you want more than 3 items?'),
+        Rule.unique().error('You have duplicate menu items'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'page' }],
+        },
+      ],
     }
   ]
 }

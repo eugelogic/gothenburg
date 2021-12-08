@@ -10,9 +10,14 @@ import styles from '../styles/Home.module.css'
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
   siteName,
   mainNavigation[]->{
-      _id,
-      title,
-      slug
+    _id,
+    title,
+    slug
+  },
+  footerNavigation[]->{
+    _id,
+    title,
+    slug
   }
 }`
 
@@ -83,7 +88,7 @@ const Home = ({ siteSettings, posts }) => {
 
       </main>
 
-      <Footer />
+      <Footer siteSettings={siteSettings} />
 
     </div>
   )

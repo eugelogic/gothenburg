@@ -32,6 +32,11 @@ const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
         _id,
         title,
         slug
+    },
+    footerNavigation[]->{
+      _id,
+      title,
+      slug
     }
 }`
 
@@ -65,7 +70,7 @@ const Page = ({ page, siteSettings }) => {
             <h1>{page?.title}</h1>
             <RenderSection sections={page?.content} />
         </main>
-        <Footer />
+        <Footer siteSettings={siteSettings} />
         </>
     )
 }
