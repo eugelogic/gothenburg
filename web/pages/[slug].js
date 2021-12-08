@@ -1,6 +1,7 @@
 import { sanityClient } from '../lib/sanity'
 import { useRouter } from 'next/router'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import RenderSection from '../components/RenderSection'
 
 const pageSlugQuery = `*[_type == "route" && defined(slug.current)]{
@@ -64,6 +65,7 @@ const Page = ({ page, siteSettings }) => {
             <h1>{page?.title}</h1>
             <RenderSection sections={page?.content} />
         </main>
+        <Footer />
         </>
     )
 }

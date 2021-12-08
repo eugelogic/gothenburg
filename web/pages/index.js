@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { sanityClient } from '../lib/sanity'
 import Head from 'next/head'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import Link from 'next/link'
 import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
@@ -81,6 +82,8 @@ const Home = ({ siteSettings, posts }) => {
         />
 
       </main>
+
+      <Footer />
 
     </div>
   )

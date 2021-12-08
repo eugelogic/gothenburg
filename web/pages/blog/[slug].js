@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 
  // Helper function to return the correct version of the document
@@ -130,6 +131,7 @@ const Post = ({ siteSettings, data, preview }) => {
                 <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
             </div>
         }
+        <Footer />
         </>
     )
 
