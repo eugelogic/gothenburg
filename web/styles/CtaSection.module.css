@@ -2,7 +2,7 @@
   background-color: cornflowerblue;
   color: white;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   min-height: 200px;
 }
 
