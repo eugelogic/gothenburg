@@ -2,7 +2,7 @@
 const previewSecret = 'pc1xvqy4rdz6kj8heapkrv022abyx5zgmuwudrvsc7ywpvfh'
 // const previewSecret = process.env.SANITY_PREVIEW_SECRET
 
-const remoteUrl = `https://gothenburg.vercel.app/`
+const remoteUrl = `https://gothenburg.vercel.app`
 const localUrl = `http://localhost:3000`
 
 export default function resolveProductionUrl(doc) {
