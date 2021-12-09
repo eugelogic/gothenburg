@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { sanityClient } from '../lib/sanity'
-import Head from 'next/head'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Layout from '../components/Layout'
 import Link from 'next/link'
 import Pagination from 'react-sanity-pagination'
 import styles from '../styles/Home.module.css'
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
   siteName,
+  shortDescription,
   mainNavigation[]->{
     _id,
     title,
@@ -58,15 +57,7 @@ const Home = ({ siteSettings, posts }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Gothenburg</title>
-        <meta name="description" content="NextJS & Sanity proof of concept blog" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header siteSettings={siteSettings} />
-
+    <Layout siteSettings={siteSettings}>
       <main style={{ maxWidth: '600px', margin: '0 auto' }}>
 
         <ul style={{ listStyle: 'none' }}>
@@ -88,9 +79,7 @@ const Home = ({ siteSettings, posts }) => {
 
       </main>
 
-      <Footer siteSettings={siteSettings} />
-
-    </div>
+    </Layout>
   )
 }
 

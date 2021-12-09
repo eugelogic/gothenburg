@@ -8,9 +8,7 @@ import { getClient } from '../../lib/sanity.server'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-
+import Layout from '../../components/Layout'
 
  // Helper function to return the correct version of the document
  // If in "preview mode" and have multiple documents, return the draft
@@ -41,6 +39,7 @@ export const getStaticPaths = async () => {
 }
 
 const postQuery = `*[_type == 'post' && slug.current == $slug][0]{
+    _type,
     _id,
     title,
     slug,
@@ -108,36 +107,34 @@ const Post = ({ siteSettings, data, preview }) => {
     // the optional?.chaining is extremely important ,you can't rely on
     // a single field of data existing whilst editors are creating new documents
     return (
-        <>
-        <Header siteSettings={siteSettings} />
-        <article style={{ maxWidth: '600px', margin: '0 auto'}}>
-            <header>
-                {post?.title && <h1>{post.title}</h1>}
-                {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
-                {post?.category?.name && <div>Category: {post.category.name}</div>}
-            </header>
-            <div>
-                {post?.body && <PortableText blocks={post.body} />}
-            </div>
-            <footer>
-                {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
-            </footer>
-        </article>
-        {preview &&
-            <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    padding: '1rem',
-                    background: 'red',
-                    color: 'white',
-                    maxWidth: '15rem',
-                    margin: '2rem auto'
-            }}>
-                <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
-            </div>
-        }
-        <Footer siteSettings={siteSettings} />
-        </>
+        <Layout siteSettings={siteSettings} post={post}>
+            <article style={{ maxWidth: '600px', margin: '0 auto'}}>
+                <header>
+                    {post?.title && <h1>{post.title}</h1>}
+                    {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
+                    {post?.category?.name && <div>Category: {post.category.name}</div>}
+                </header>
+                <div>
+                    {post?.body && <PortableText blocks={post.body} />}
+                </div>
+                <footer>
+                    {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
+                </footer>
+            </article>
+            {preview &&
+                <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        padding: '1rem',
+                        background: 'red',
+                        color: 'white',
+                        maxWidth: '15rem',
+                        margin: '2rem auto'
+                }}>
+                    <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
+                </div>
+            }
+        </Layout>
     )
 
 }
