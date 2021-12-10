@@ -64,7 +64,7 @@ const Page = ({ page, siteSettings }) => {
     // console.log(page)
 
     return (
-        <Layout siteSettings={siteSettings} page={page}>
+        <Layout siteSettings={siteSettings} template={page}>
             <main style={{ maxWidth: '600px', margin: '0 auto'}}>
                 <h1>{page?.title}</h1>
                 <RenderSection sections={page?.content}/>

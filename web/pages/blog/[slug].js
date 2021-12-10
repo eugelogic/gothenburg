@@ -107,7 +107,7 @@ const Post = ({ siteSettings, data, preview }) => {
     // the optional?.chaining is extremely important ,you can't rely on
     // a single field of data existing whilst editors are creating new documents
     return (
-        <Layout siteSettings={siteSettings} page={post}>
+        <Layout siteSettings={siteSettings} template={post}>
             <article style={{ maxWidth: '600px', margin: '0 auto'}}>
                 <header>
                     {post?.title && <h1>{post.title}</h1>}

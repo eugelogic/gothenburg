@@ -2,13 +2,13 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
-const Layout = ({ siteSettings, page, children }) => {
+const Layout = ({ siteSettings, template, children }) => {
 
     const pageTitle = () => {
         return (
-            `${page._type}` === 'home'
+            `${template._type}` === 'home'
                 ? `${siteSettings?.shortDescription} | ${siteSettings?.siteName}`
-                : `${page?.title} | ${siteSettings?.siteName}`
+                : `${template?.title} | ${siteSettings?.siteName}`
         )
     }
 

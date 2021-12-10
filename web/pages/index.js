@@ -57,7 +57,7 @@ const Home = ({ siteSettings, posts }) => {
   };
 
   return (
-    <Layout siteSettings={siteSettings} page={{ _type: 'home' }}>
+    <Layout siteSettings={siteSettings} template={{ _type: 'home' }}>
       <main style={{ maxWidth: '600px', margin: '0 auto' }}>
 
         <ul style={{ listStyle: 'none' }}>
