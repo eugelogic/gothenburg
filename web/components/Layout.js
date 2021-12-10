@@ -1,25 +1,23 @@
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
-const Layout = ({ siteSettings, post, page, children }) => {
+const Layout = ({ siteSettings, page, children }) => {
 
-    const router = useRouter()
+    const pageTitle = () => {
+        return (
+            `${page._type}` === 'home'
+                ? `${siteSettings?.shortDescription} | ${siteSettings?.siteName}`
+                : `${page?.title} | ${siteSettings?.siteName}`
+        )
+    }
 
     return (
         <>
         <Head>
             <link rel='icon' href='./favicon.ico' />
             <meta view='viewport' content='initial-scale=1.0, width=device-width' />
-            <title>
-                {router.pathname === '/'
-                    ? `${siteSettings?.shortDescription} | ${siteSettings?.siteName}`
-                    : `${post?._type}` === 'post'
-                    ? `${post?.title} | ${siteSettings?.siteName}`
-                    : `${page?.title} | ${siteSettings?.siteName}`
-                }
-            </title>
+            <title>{pageTitle()}</title>
             <meta name='description' content={siteSettings?.siteDescription} />
         </Head>
         <Header siteSettings={siteSettings} />
