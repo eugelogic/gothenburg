@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
+import FormatDate from '../../components/FormatDate'
 
  // Helper function to return the correct version of the document
  // If in "preview mode" and have multiple documents, return the draft
@@ -118,7 +119,7 @@ const Post = ({ siteSettings, data, preview }) => {
                     {post?.body && <PortableText blocks={post.body} />}
                 </div>
                 <footer>
-                    {post?.publishedAt && post?.author && <p>Published on: <time>{post.publishedAt}</time> by {post.author.name}</p>}
+                    {post?.publishedAt && post?.author && <p>Published on: <time dateTime={post.publishedAt}><FormatDate date={post.publishedAt} /></time> by {post.author.name}</p>}
                 </footer>
             </article>
             {preview &&
