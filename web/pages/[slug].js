@@ -65,7 +65,7 @@ const Page = ({ page, siteSettings }) => {
 
     return (
         <Layout siteSettings={siteSettings} template={page}>
-            <main style={{ maxWidth: '600px', margin: '0 auto'}}>
+            <main className="">
                 <h1>{page?.title}</h1>
                 <RenderSection sections={page?.content}/>
             </main>

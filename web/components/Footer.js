@@ -1,12 +1,11 @@
 import Link from 'next/link'
-import styles from '../styles/Footer.module.css'
 
 const Footer = ({ siteSettings }) => {
 
     const {footerNavigation } = siteSettings
 
     return (
-        <footer className={styles.footer}>
+        <footer className="">
             <nav>
                 <ul>{footerNavigation?.length > 0 && footerNavigation.map(navItem => (
                     <li key={navItem._id}>

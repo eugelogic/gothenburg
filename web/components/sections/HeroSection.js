@@ -1,5 +1,4 @@
 import { urlFor } from '../../lib/sanity'
-import styles from '../../styles/HeroSection.module.css'
 
 const HeroSection = (props) => {
 
@@ -16,8 +15,8 @@ const HeroSection = (props) => {
     : {}
 
     return (
-        <div className={styles.container} style={style}>
-            <div className={styles.content}>
+        <div className="" style={style}>
+            <div className="">
                 <h2>{heading}</h2>
                 <p>{tagline}</p>
             </div>

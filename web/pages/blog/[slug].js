@@ -109,7 +109,7 @@ const Post = ({ siteSettings, data, preview }) => {
     // a single field of data existing whilst editors are creating new documents
     return (
         <Layout siteSettings={siteSettings} template={post}>
-            <article style={{ maxWidth: '600px', margin: '0 auto'}}>
+            <article className="">
                 <header>
                     {post?.title && <h1>{post.title}</h1>}
                     {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
@@ -123,15 +123,7 @@ const Post = ({ siteSettings, data, preview }) => {
                 </footer>
             </article>
             {preview &&
-                <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        padding: '1rem',
-                        background: 'red',
-                        color: 'white',
-                        maxWidth: '15rem',
-                        margin: '2rem auto'
-                }}>
+                <div className="">
                     <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
                 </div>
             }

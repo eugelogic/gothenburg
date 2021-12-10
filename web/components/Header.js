@@ -1,15 +1,14 @@
 import Link from 'next/link'
-import styles from '../styles/Header.module.css'
 
 const Header = ({ siteSettings }) => {
 
     const {siteName, mainNavigation } = siteSettings
 
     return (
-        <header className={styles.header}>
+        <header className="">
             <Link href="/">
                 <a aria-label="Go Home">
-                    <span className={styles.siteTitle}>
+                    <span className="">
                         {siteName}
                     </span>
                 </a>

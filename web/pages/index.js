@@ -3,7 +3,6 @@ import { sanityClient } from '../lib/sanity'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import Pagination from 'react-sanity-pagination'
-import styles from '../styles/Home.module.css'
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
   siteName,
@@ -58,9 +57,9 @@ const Home = ({ siteSettings, posts }) => {
 
   return (
     <Layout siteSettings={siteSettings} template={{ _type: 'home' }}>
-      <main style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <main className="">
 
-        <ul style={{ listStyle: 'none' }}>
+        <ul className="">
           {items?.length > 0 && items.map(item =>(
             <li key={item._id}>
               <Link href={`/blog/${item.slug.current}`}>
@@ -74,7 +73,7 @@ const Home = ({ siteSettings, posts }) => {
           items={posts}
           action={action}
           postsPerPage={postsPerPage}
-          className={styles.pagePagination}
+          className=""
         />
 
       </main>
