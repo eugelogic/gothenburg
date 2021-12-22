@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { sanityClient } from '../lib/sanity'
+import { sanityClient, urlFor } from '../lib/sanity'
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import Image from 'next/image'
+import FormatDate from '../components/FormatDate'
 import Pagination from 'react-sanity-pagination'
 
 const siteSettingsQuery = `*[_type == 'siteSettings'][1]{
@@ -25,7 +27,8 @@ const postsQuery = `*[_type == 'post']{
   slug,
   excerpt,
   author->{
-    name
+    name,
+    image
   },
   mainImage,
   category->{
@@ -63,8 +66,26 @@ const Home = ({ siteSettings, posts }) => {
           {items?.length > 0 && items.map(item =>(
             <li key={item._id}>
               <Link href={`/blog/${item.slug.current}`}>
-                <a><h2>{item.title}</h2></a>
+                <a>
+                  <Image src={urlFor(item.mainImage).url()} alt={item.mainImage.alt} width={780} height={585}/>
+                </a>
               </Link>
+              <p>{item.category.name}</p>
+              <Link href={`/blog/${item.slug.current}`}>
+                <a>
+                  <h2>{item.title}</h2>
+                  <p>{item.excerpt}</p>
+                </a>
+              </Link>
+              <footer>
+                <div>
+                  <Image src={urlFor(item.author.image).url()} alt={item.author.name} width={50} height={50}/>
+                </div>
+                <div>
+                  <p>{item.author.name}</p>
+                  <time dateTime={item.publishedAt}><FormatDate date={item.publishedAt} /></time>
+                </div>
+              </footer>
             </li>
           ))}
         </ul>
