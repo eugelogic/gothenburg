@@ -57,9 +57,9 @@ const Home = ({ siteSettings, posts }) => {
 
   return (
     <Layout siteSettings={siteSettings} template={{ _type: 'home' }}>
-      <main className="">
+      <main className="max-w-5xl mx-auto">
 
-        <ul className="">
+        <ul className="grid gap-5 md:grid-cols-3">
           {items?.length > 0 && items.map(item =>(
             <li key={item._id}>
               <Link href={`/blog/${item.slug.current}`}>
