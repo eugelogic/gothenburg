@@ -39,17 +39,3 @@
   line-height: 1.5;
   font-size: 1.5rem;
 }
-
-.pagePagination {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.pagePagination li {
-  margin-right: 1rem;
-}
-
-.pagePagination li:last-child {
-  margin-right: 0;
-}
