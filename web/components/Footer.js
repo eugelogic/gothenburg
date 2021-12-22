@@ -5,18 +5,18 @@ const Footer = ({ siteSettings }) => {
     const {footerNavigation } = siteSettings
 
     return (
-        <footer className="">
+        <footer className="flex flex-col items-center">
             <nav>
-                <ul>{footerNavigation?.length > 0 && footerNavigation.map(navItem => (
-                    <li key={navItem._id}>
+                <ul className="flex">{footerNavigation?.length > 0 && footerNavigation.map(navItem => (
+                    <li key={navItem._id} className="p-2">
                         <Link href={`/${navItem.slug.current}`}>
                             <a>{navItem.title}</a>
                         </Link>
                     </li>
                 ))}</ul>
             </nav>
-            <a href="https://github.com/eugelogic/gothenburg" target="_blank" rel="noreferrer noopener">View Source Code</a>
-            <p>&copy; Gothenburg {new Date().getFullYear()}</p>
+            <a href="https://github.com/eugelogic/gothenburg" target="_blank" rel="noreferrer noopener" className="py-1">View Source Code</a>
+            <p className="py-1">&copy; Gothenburg {new Date().getFullYear()}</p>
         </footer>
     )
 }
