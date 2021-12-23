@@ -45,7 +45,8 @@ const postQuery = `*[_type == 'post' && slug.current == $slug][0]{
     title,
     slug,
     author->{
-        name
+        name,
+        image
     },
     mainImage,
     category->{
@@ -109,19 +110,22 @@ const Post = ({ siteSettings, data, preview }) => {
     // a single field of data existing whilst editors are creating new documents
     return (
         <Layout siteSettings={siteSettings} template={post}>
-            <article className="">
-                <header>
-                    {post?.title && <h1>{post.title}</h1>}
-                    {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
-                    {post?.category?.name && <div>Category: {post.category.name}</div>}
-                </header>
-                <div>
-                    {post?.body && <PortableText blocks={post.body} />}
-                </div>
-                <footer>
-                    {post?.publishedAt && post?.author && <p>Published on: <time dateTime={post.publishedAt}><FormatDate date={post.publishedAt} /></time> by {post.author.name}</p>}
-                </footer>
-            </article>
+            <main className="max-w-4xl mx-auto">
+                <article>
+                    <header>
+                        {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
+                        {post?.category?.name && <p className="uppercase pt-4 pl-4">{post.category.name}</p>}
+                        {post?.title && <h1 className="text-4xl pt-4 pl-4">{post.title}</h1>}
+                    </header>
+                    <div className="pt-4 pl-4">
+                        {post?.body && <PortableText blocks={post.body} />}
+                    </div>
+                    <footer className="pt-4 pl-4">
+                        {post?.author.image && <Image src={urlFor(post?.author.image).url()} alt={post?.author.name} width={50} height={50} className="rounded-full"/>}
+                        {post?.publishedAt && post?.author && <p>Published on: <time dateTime={post.publishedAt}><FormatDate date={post.publishedAt} /></time> by {post.author.name}</p>}
+                    </footer>
+                </article>
+            </main>
             {preview &&
                 <div className="">
                     <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
