@@ -144,8 +144,8 @@ const Post = ({ siteSettings, data, preview }) => {
                 </article>
             </main>
             {preview &&
-                <div className="">
-                    <Link href="/api/exit-preview"><a>Exit Preview Mode</a></Link>
+                <div className="text-center mb-8">
+                    <Link href="/api/exit-preview"><a className="text-white uppercase px-8 py-4 bg-red-600 rounded-md hover:text-black hover:border-black hover:bg-white hover:border">Exit Preview Mode</a></Link>
                 </div>
             }
         </Layout>
