@@ -7,7 +7,7 @@ const CtaSection = (props) => {
     return (
         <div className="bg-amber-600">
             <div className="max-w-[56rem] mx-auto px-5 pt-10 pb-16 text-white">
-                <h2 className="mt-3 mb-2 uppercase">{heading}</h2>
+                <h2 className="text-3xl mt-3 mb-2 uppercase">{heading}</h2>
                 <p className="my-2">{tagline}</p>
                 <div className="mt-8">
                     <Link href={ctaLink}>
