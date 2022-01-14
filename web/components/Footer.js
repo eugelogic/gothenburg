@@ -15,7 +15,7 @@ const Footer = ({ siteSettings }) => {
                     </li>
                 ))}</ul>
             </nav>
-            <a href="https://github.com/eugelogic/gothenburg" target="_blank" rel="noreferrer noopener" className="py-1">View Source Code</a>
+            <a href="https://github.com/eugelogic/gothenburg" target="_blank" rel="noreferrer noopener" className="font-headings font-bold text-xs uppercase mt-2 mb-6 px-8 py-4 rounded-md border border-black border-solid hover:text-white hover:border-white hover:bg-black">View Source Code</a>
             <p className="font-headings py-1">&copy; Gothenburg {new Date().getFullYear()}</p>
         </footer>
     )
