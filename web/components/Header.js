@@ -18,7 +18,7 @@ const Header = ({ siteSettings }) => {
             <nav>
                 <ul className="flex">
                 {mainNavigation?.length > 0 && mainNavigation.map(navItem => (
-                        <li key={navItem._id} className="font-headings text-sm px-2 py-4 md:text-lg md:p-4">
+                        <li key={navItem._id} className="font-headings text-sm px-2 py-4 md:text-lg md:p-4 hover:font-bold">
                             <Link href={`/${navItem.slug.current}`}>
                                 <a>
                                     {navItem.title}

@@ -8,7 +8,7 @@ const Footer = ({ siteSettings }) => {
         <footer className="flex flex-col items-center">
             <nav>
                 <ul className="flex">{footerNavigation?.length > 0 && footerNavigation.map(navItem => (
-                    <li key={navItem._id} className="font-headings p-2">
+                    <li key={navItem._id} className="font-headings p-2 hover:font-bold">
                         <Link href={`/${navItem.slug.current}`}>
                             <a>{navItem.title}</a>
                         </Link>
