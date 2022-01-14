@@ -1,3 +1,9 @@
+/* Headings */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+/* Body */
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +11,23 @@
 @layer base {
   h1,
   h2,
-  h3,
+  h3 {
+    @apply font-headings;
+    @apply text-neutral-800;
+  }
+
   p,
   a,
   ul li,
-  span {
-    @apply text-neutral-800;
+  span,
+  time {
+    @apply font-body;
+    @apply text-xl;
+    @apply text-neutral-900;
+  }
+  blockquote {
+    @apply font-body;
+    @apply text-xl;
+    @apply text-black;
   }
 }

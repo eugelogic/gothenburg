@@ -115,7 +115,7 @@ const Post = ({ siteSettings, data, preview }) => {
                     <header>
                         {post?.mainImage && <Image src={urlFor(post.mainImage).url()} width={900} height={675} alt={post.mainImage.alt} />}
                         {post?.category?.name && <p className="uppercase pt-4 pl-4">{post.category.name}</p>}
-                        {post?.title && <h1 className="text-4xl pt-4 pl-4">{post.title}</h1>}
+                        {post?.title && <h1 className="text-4xl font-bold pt-4 pl-4">{post.title}</h1>}
                     </header>
                     <div className="w-full p-4">
                         {post?.body && <PortableText
@@ -126,9 +126,9 @@ const Post = ({ siteSettings, data, preview }) => {
                                 h3: (props) => <h3 className="mt-2 mb-1 text-2xl" {...props} />,
                                 h4: (props) => <h4 className="mt-2 mb-1 text-xl" {...props} />,
                                 normal: (props) => <p className="my-2" {...props} />,
-                                link: (props) => <a className="underline hover:no-underline" {...props} />,
+                                link: (props) => <a className="underline decoration-1 hover:no-underline" {...props} />,
                                 ul: (props) => <ul className="my-4 pl-5 list-disc" {...props} />,
-                                blockquote: (props) => <blockquote className="relative my-4 p-6 text-l italic border-l-4 bg-neutral-100 text-neutral-600 border-neutral-500 quote" {...props} />
+                                blockquote: (props) => <blockquote className="relative my-4 p-6 text-l italic border-l-4 bg-neutral-100 border-neutral-500 quote" {...props} />
                             }}
                         />}
                     </div>

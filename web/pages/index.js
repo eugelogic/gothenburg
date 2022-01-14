@@ -98,7 +98,7 @@ const Home = ({ siteSettings, posts }) => {
           items={posts}
           action={action}
           postsPerPage={postsPerPage}
-          className="max-w-[7rem] flex justify-evenly mx-auto my-7"
+          className="max-w-[7rem] flex justify-evenly mx-auto my-7 font-body"
         />
 
       </main>

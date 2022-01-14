@@ -9,7 +9,7 @@ const Header = ({ siteSettings }) => {
             <Link href="/">
                 <a aria-label="Go Home">
                     <div className="py-4">
-                        <span className="text-5xl">
+                        <span className="font-headings font-bold text-3xl md:text-5xl">
                             {siteName}
                         </span>
                     </div>
@@ -18,7 +18,7 @@ const Header = ({ siteSettings }) => {
             <nav>
                 <ul className="flex">
                 {mainNavigation?.length > 0 && mainNavigation.map(navItem => (
-                        <li key={navItem._id} className="p-4">
+                        <li key={navItem._id} className="font-headings text-sm md:text-lg p-4">
                             <Link href={`/${navItem.slug.current}`}>
                                 <a>
                                     {navItem.title}
