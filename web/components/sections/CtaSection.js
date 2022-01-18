@@ -6,7 +6,7 @@ const CtaSection = (props) => {
 
     return (
         <div className="bg-amber-600">
-            <div className="max-w-[56rem] mx-auto px-5 pt-10 pb-16">
+            <div className="max-w-4xl mx-auto px-5 pt-10 pb-16">
                 <h2 className="text-white">{heading}</h2>
                 <p className="text-white">{tagline}</p>
                 <div className="mt-8">
