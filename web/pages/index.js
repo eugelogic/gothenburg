@@ -62,7 +62,7 @@ const Home = ({ siteSettings, posts }) => {
     <Layout siteSettings={siteSettings} template={{ _type: 'home' }}>
       <main className="max-w-5xl mx-auto">
 
-        <ul className="grid gap-5 md:grid-cols-3">
+        <ul className="grid gap-5 md:grid-cols-3 list-none m-0 p-0">
           {items?.length > 0 && items.map(item =>(
             <li key={item._id} className="flex flex-col rounded-lg shadow-lg overflow-hidden hover:shadow-2xl">
               <Link href={`/blog/${item.slug.current}`}>
@@ -70,22 +70,22 @@ const Home = ({ siteSettings, posts }) => {
                   <Image src={urlFor(item.mainImage).url()} alt={item.mainImage.alt} width={780} height={585}/>
                 </a>
               </Link>
-              <p className="uppercase pt-4 pl-4">{item.category.name}</p>
+              <p className="uppercase m-0 pt-4 pl-4">{item.category.name}</p>
               <div className="flex-1 flex flex-col justify-between">
                 <Link href={`/blog/${item.slug.current}`}>
-                  <a>
-                    <div className="p-4">
-                      <h2 className="text-xl font-bold">{item.title}</h2>
+                  <a className="no-underline">
+                    <div className="px-4 pt-4 pb-2">
+                      <h2 className="text-xl m-0">{item.title}</h2>
                       <p>{item.excerpt}</p>
                     </div>
                   </a>
                 </Link>
-                <footer className="flex p-4 flex-shrink-0">
+                <footer className="flex px-4 pt-2 pb-4 flex-shrink-0">
                   <div>
                     <Image src={urlFor(item.author.image).url()} alt={item.author.name} width={50} height={50} className="rounded-full"/>
                   </div>
                   <div className="ml-4">
-                    <p>{item.author.name}</p>
+                    <p className="m-0">{item.author.name}</p>
                     <time className="text-gray-500" dateTime={item.publishedAt}><FormatDate date={item.publishedAt} /></time>
                   </div>
                 </footer>
@@ -98,7 +98,7 @@ const Home = ({ siteSettings, posts }) => {
           items={posts}
           action={action}
           postsPerPage={postsPerPage}
-          className="max-w-[7rem] flex justify-evenly mx-auto my-7 font-body"
+          className="max-w-[7rem] flex justify-evenly mx-auto my-7 font-body list-none p-0"
         />
 
       </main>

@@ -11,9 +11,29 @@
 @layer base {
   h1,
   h2,
+  h3,
+  h4 {
+    @apply font-headings text-neutral-800 font-bold;
+  }
+  h1,
+  h2 {
+    @apply mt-6 mb-2;
+  }
+  h3,
+  h4 {
+    @apply mt-2 mb-1;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
   h3 {
-    @apply font-headings;
-    @apply text-neutral-800;
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
   }
 
   p,
@@ -21,13 +41,18 @@
   ul li,
   span,
   time {
-    @apply font-body;
-    @apply text-xl;
-    @apply text-neutral-900;
+    @apply font-body text-xl text-neutral-900;
+  }
+  p {
+    @apply my-2;
+  }
+  a {
+    @apply underline decoration-1 hover:no-underline;
+  }
+  ul {
+    @apply my-4 pl-5 list-disc;
   }
   blockquote {
-    @apply font-body;
-    @apply text-xl;
-    @apply text-black;
+    @apply font-body text-xl text-black relative my-4 p-6 italic border-l-4 bg-neutral-100 border-neutral-500;
   }
 }

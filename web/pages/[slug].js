@@ -71,7 +71,7 @@ const Page = ({ page, siteSettings }) => {
         <Layout siteSettings={siteSettings} template={page}>
             <main className="pb-5">
                 <div className="max-w-[56rem] mx-auto px-5">
-                    <h1 className="font-bold mt-3 mb-2 text-3xl uppercase text-center">{page?.title}</h1>
+                    <h1 className="text-center uppercase">{page?.title}</h1>
                 </div>
                 <RenderSection sections={page?.content}/>
             </main>
